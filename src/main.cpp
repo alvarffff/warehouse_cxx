@@ -1,27 +1,29 @@
 #include <raylib.h>
-#include "ball.h"
+#include "game.hpp"
 
 int main()
 {
-    Color darkGreen = Color{20, 160, 133, 255};
+    int window_width = 800;
+    int window_height = 800;
+    int frame_rate = 60;
 
-    const int screenWidth = 800;
-    const int screenHeight = 600;
+    Color grey = {29, 29, 27, 255};
+    Color red = {255, 0, 0, 255};
 
-    Ball ball = Ball();
+    InitWindow(window_width, window_height, "Warehouse");
+    SetTargetFPS(frame_rate);
 
-    InitWindow(screenWidth, screenHeight, "My first RAYLIB program!");
-    SetTargetFPS(60);
-
-    while (!WindowShouldClose())
+    Game game;
+    game.LoadMap("map_w0.txt");
+    // Checks if the windows close bottom is pressed
+    while (WindowShouldClose() == false)
     {
+        game.HandleInput();
         BeginDrawing();
-        ClearBackground(darkGreen);
-        ball.Update();
-        ball.Draw();
+        ClearBackground(grey);
+        game.Draw();
         EndDrawing();
     }
 
     CloseWindow();
-    return 0;
 }

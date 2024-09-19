@@ -9,10 +9,10 @@ public:
     Object(int x, int y);
     ~Object();
     void Draw();
+    Vector2 position;
 
 private:
     Texture2D image;
-    Vector2 position;
 };
 
 #endif

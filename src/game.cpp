@@ -20,23 +20,61 @@ void Game::Draw()
     }
 }
 
+void Game::Update()
+{
+    for (auto &object : objects)
+    {
+        if (CheckCollisionRecs(Rectangle{worker.position.x, worker.position.y, 60, 60}, Rectangle{object.position.x, object.position.y, 80, 80}))
+        {
+            switch (worker.direction)
+            {
+            case 0:
+                break;
+            case 1:
+                worker.position.x = worker.position.x + 10;
+                break;
+            case 2:
+                worker.position.x = worker.position.x - 10;
+                break;
+            case 3:
+                worker.position.y = worker.position.y + 10;
+                break;
+            case 4:
+                worker.position.y = worker.position.y - 10;
+                break;
+
+            default:
+                break;
+            }
+        }
+    }
+}
+
 void Game::HandleInput()
 {
     if (IsKeyDown(KEY_LEFT))
     {
+        worker.direction = 1;
         worker.MoveLeft();
     }
     else if (IsKeyDown(KEY_RIGHT))
     {
+        worker.direction = 2;
         worker.MoveRight();
     }
     else if (IsKeyDown(KEY_UP))
     {
+        worker.direction = 3;
         worker.MoveUp();
     }
     else if (IsKeyDown(KEY_DOWN))
     {
+        worker.direction = 4;
         worker.MoveDown();
+    }
+    else
+    {
+        worker.direction = 0;
     }
 }
 

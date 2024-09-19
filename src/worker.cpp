@@ -16,7 +16,7 @@ Worker::~Worker()
 void Worker::Draw()
 {
     // DrawTextureV(image, position, WHITE);
-    DrawRectangle(position.x, position.y, 70, 70, {255, 255, 255, 255});
+    DrawRectangle(position.x, position.y, 60, 60, {255, 255, 255, 255});
 }
 
 void Worker::MoveLeft()

@@ -21,7 +21,9 @@ int main()
         game.HandleInput();
         BeginDrawing();
         ClearBackground(grey);
+        game.Update();
         game.Draw();
+
         EndDrawing();
     }
 
